@@ -5,7 +5,7 @@ on:
 
 jobs:
   SERVICE:
-    uses: ./build-pull-requests-backend.yml
+    uses: YuliiaLysak/testcontainers-cosmos-db/.github/workflows/build-pull-requests-backend.yml@master
     with:
       java_version: "17"
     secrets: inherit
