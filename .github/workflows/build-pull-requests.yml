@@ -1,0 +1,11 @@
+name: BUILD.PULL-REQUESTS
+
+on:
+  pull_request:
+
+jobs:
+  SERVICE:
+    uses: ./build-pull-requests-backend.yml
+    with:
+      java_version: "17"
+    secrets: inherit

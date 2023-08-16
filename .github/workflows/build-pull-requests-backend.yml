@@ -1,0 +1,30 @@
+name: BUILD.PULL-REQUESTS.BACKEND
+
+on:
+  workflow_call:
+    inputs:
+      java_varsion:
+        default: '17'
+        type: string
+
+jobs:
+  BUILD:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: CHECKOUT
+        uses: actions/checkout@v3
+
+      - name: SETUP JAVA
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: BUILD
+        run: |
+          mkdir -p ~/.gradle/
+          echo ${{ secrets.GRADLE_PROPERTIES }} | base64 -d > !/.gradle/gradle.properties
+          cat ~/.gradle/gradle.properties
+          chmod +x gradlew
+          ./gradlew --init-script ./gradle/init.gradle dependencies build --info --rerun-tasks --no-build-cache --refresh-dependencies
