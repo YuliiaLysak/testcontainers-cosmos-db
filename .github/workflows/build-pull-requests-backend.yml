@@ -23,8 +23,6 @@ jobs:
 
       - name: BUILD
         run: |
-          pwd && ls -al
           cd service
-          pwd && ls -al
           chmod +x gradlew
-          ./gradlew build
+          ./gradlew build --info
