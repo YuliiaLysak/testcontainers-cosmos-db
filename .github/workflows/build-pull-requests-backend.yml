@@ -24,7 +24,5 @@ jobs:
       - name: BUILD
         run: |
           mkdir -p ~/.gradle/
-          echo ${{ secrets.GRADLE_PROPERTIES }} | base64 -d > !/.gradle/gradle.properties
-          cat ~/.gradle/gradle.properties
           chmod +x gradlew
-          ./gradlew --init-script ./gradle/init.gradle dependencies build --info --rerun-tasks --no-build-cache --refresh-dependencies
+          ./gradlew build
