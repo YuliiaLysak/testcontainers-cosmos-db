@@ -5,5 +5,5 @@ on:
 
 jobs:
   SERVICE:
-    uses: YuliiaLysak/testcontainers-cosmos-db/.github/workflows/build-pull-requests-backend.yml@master
+    uses: YuliiaLysak/testcontainers-cosmos-db/.github/workflows/build-pull-requests-backend.yml@cosmos-db
     secrets: inherit
