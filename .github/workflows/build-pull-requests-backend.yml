@@ -23,6 +23,5 @@ jobs:
 
       - name: BUILD
         run: |
-          mkdir -p ~/.gradle/
           chmod +x gradlew
           ./gradlew build
