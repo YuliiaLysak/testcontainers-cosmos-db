@@ -10,8 +10,51 @@ repositories {
 }
 
 dependencies {
+    compileOnly "org.projectlombok:lombok:1.18.26"
+    annotationProcessor "org.projectlombok:lombok:1.18.26"
+    implementation 'com.azure.spring:spring-cloud-azure-starter-data-cosmos:5.4.0'
+    implementation 'com.azure:azure-spring-data-cosmos:5.4.0'
+    implementation 'com.azure:azure-identity:1.10.0'
+
+    testCompileOnly "org.projectlombok:lombok:1.18.26"
+    testAnnotationProcessor "org.projectlombok:lombok:1.18.26"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:3.1.2"
+    testImplementation "org.testcontainers:junit-jupiter:1.18.3"
+    testImplementation 'org.testcontainers:azure:1.18.3'
+
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+//testing {
+//    suites {
+//        integrationTest(JvmTestSuite) {
+//            dependencies {
+//                implementation project()
+//                compileOnly "org.projectlombok:lombok:1.18.26"
+//                annotationProcessor "org.projectlombok:lombok:1.18.26"
+//                implementation "org.springframework.boot:spring-boot-starter-test:3.1.2"
+//                implementation "org.testcontainers:junit-jupiter:1.18.3"
+//                implementation 'org.testcontainers:azure:1.18.3'
+//            }
+//            sources {
+//                compileClasspath += sourceSets.main.output
+//                runtimeClasspath += sourceSets.main.output
+//            }
+//        }
+//    }
+//}
+//
+//tasks.named('check') {
+//    dependsOn(testing.suites.integrationTest)
+//}
+//sourceSets.integrationTest.compileClasspath += sourceSets.main.compileClasspath
+//sourceSets.integrationTest.runtimeClasspath += sourceSets.main.runtimeClasspath
+
+jar {
+    enabled = false
+    archiveBaseName = "$rootProject.name"
+    project.version = ""
 }
 
 test {

@@ -10,7 +10,7 @@ on:
 jobs:
   BUILD:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - name: CHECKOUT
         uses: actions/checkout@v3
@@ -23,8 +23,6 @@ jobs:
 
       - name: BUILD
         run: |
-          mkdir -p ~/.gradle/
-          echo ${{ secrets.GRADLE_PROPERTIES }} | base64 -d > !/.gradle/gradle.properties
-          cat ~/.gradle/gradle.properties
+          cd service
           chmod +x gradlew
-          ./gradlew --init-script ./gradle/init.gradle dependencies build --info --rerun-tasks --no-build-cache --refresh-dependencies
+          ./gradlew build --info
